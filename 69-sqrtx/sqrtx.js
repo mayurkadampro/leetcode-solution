@@ -16,6 +16,7 @@ var mySqrt = function (x) {
     /* Third solution
         return Math.floor(Math.sqrt(x));
     */
+    
     // Fourth Solution
     let left = 0;
     let right = x;
