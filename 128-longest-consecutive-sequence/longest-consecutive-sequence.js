@@ -3,8 +3,14 @@
  * @return {number}
  */
 var longestConsecutive = function (nums) {
-    let numsSet = new Set(nums);
     let longest = 0;
+    let numsSet = new Set();
+    for(let i of nums){
+        numsSet.add(i)
+    }
+
+
+    
     for (let i in nums) {
         if (!numsSet.has(nums[i] - 1)) {
             let length = 0;
