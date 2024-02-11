@@ -8,16 +8,19 @@ var cancellable = function (fn, args, t) {
 
 
     // 1st Solution
-    let timeout = setTimeout(() =>
-        fn(...args)
-        , t)
+    // let timeout = setTimeout(() =>
+    //     fn(...args)
+    //     , t)
 
-    let cancelFn = () => clearTimeout(timeout);
+    // let cancelFn = () => clearTimeout(timeout);
+    // return cancelFn;
 
 
     // 2nd Solution
-    
-    return cancelFn;
+    timeout = setTimeout(fn, t, ...args);
+    return function () {
+        clearTimeout(timeout);
+    }
 };
 
 
