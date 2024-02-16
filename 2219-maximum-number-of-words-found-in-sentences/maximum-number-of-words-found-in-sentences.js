@@ -4,10 +4,7 @@
  */
 var mostWordsFound = function (sentences) {
     return sentences.reduce((acc, item) => {
-        if (acc >= item.split(" ").length) {
-            return acc;
-        } else {
-            return item.split(" ").length
-        }
-    }, 0)
+        if (acc >= item.split(" ").length) return acc;
+        return item.split(" ").length
+    }, 0);
 };
