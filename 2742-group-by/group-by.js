@@ -3,17 +3,26 @@
  * @return {Object}
  */
 Array.prototype.groupBy = function (fn) {
-    return this.reduce((acc, item) => {
-        let key = fn(item);
-        console.log(key);
+    const ans = {};
+    for (let e of this) {
+        const key = fn((e))
+        // ans[key] ||= [];
+        ans[key] =ans[key]||[]  // this can be written as ans[key] ||=[] 
+        ans[key].push(e)
+    }
+    return ans
+    // By REDUCE METHOD
+    // return this.reduce((acc, item) => {
+    //     let key = fn(item);
+    //     console.log(key);
 
-        if (!acc[key]) {
-            acc[key] = [];
-        }
+    //     if (!acc[key]) {
+    //         acc[key] = [];
+    //     }
 
-        acc[key].push(item);
-        return acc;
-    }, {});
+    //     acc[key].push(item);
+    //     return acc;
+    // }, {});
 };
 
 /**
