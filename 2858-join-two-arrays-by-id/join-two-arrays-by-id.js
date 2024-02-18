@@ -13,5 +13,5 @@ var join = function (arr1, arr2) {
             map[obj.id] = obj;
         }
     });
-    return [...Object.values(map)];
+    return Object.values(map);
 };
