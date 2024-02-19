@@ -45,8 +45,3 @@ var flat = function (arr, n, tempArray = []) {
 //             []
 //         ) :
 //         arr;
-
-// 4th optimal solution
-
-
-
