@@ -4,7 +4,6 @@
  * @return {Array}
  */
 var flat = function (arr, n) {
-
     // 1st Recursive Solution
     let result = [];
     var depthFlat = function (arr, count) {
