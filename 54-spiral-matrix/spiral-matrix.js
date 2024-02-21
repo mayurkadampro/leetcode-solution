@@ -3,8 +3,6 @@
  * @return {number[]}
  */
 var spiralOrder = function (matrix) {
-    const rows = matrix.length;
-    const cols = matrix[0].length;
     const res = [];
     let d = 0;
 
