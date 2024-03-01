@@ -25,19 +25,35 @@ var searchMatrix = function (matrix, target) {
     // return false;
 
     // 2nd solution - Binary search in each row - O(mlog n)
-    for (let i = 0; i < matrix.length; i++) {
-        let left = 0;
-        let right = matrix[0].length - 1;
+    // for (let i = 0; i < matrix.length; i++) {
+    //     let left = 0;
+    //     let right = matrix[0].length - 1;
 
-        while (left <= right) {
-            let mid = Math.floor((left + right) / 2);
-            if (matrix[i][mid] > target) {
-                right = mid - 1;
-            } else if (matrix[i][mid] < target) {
-                left = mid + 1;
-            } else {
-                return true;
-            }
+    //     while (left <= right) {
+    //         let mid = Math.floor((left + right) / 2);
+    //         if (matrix[i][mid] > target) {
+    //             right = mid - 1;
+    //         } else if (matrix[i][mid] < target) {
+    //             left = mid + 1;
+    //         } else {
+    //             return true;
+    //         }
+    //     }
+    // }
+    // return false;
+
+    // 3rd solution - Binary search complete matrix - O(log mn)
+    let left = 0;
+    let right = (matrix.length * matrix[0].length) - 1;
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        let midNum = matrix[Math.floor(mid / matrix[0].length)][mid % matrix[0].length];
+        if (midNum > target) {
+            right = mid - 1;
+        } else if (midNum < target) {
+            left = mid + 1;
+        } else {
+            return true;
         }
     }
     return false;
