@@ -4,11 +4,9 @@ function threeSum(nums: number[]): number[][] {
     nums.sort((a, b) => a - b);
 
     for (let i = 0; i < nums.length; i++) {
-
         if (i > 0 && nums[i] === nums[i - 1]) {
             continue
         }
-
         let j = i + 1;
         let k = nums.length - 1;
         while (j < k) {
