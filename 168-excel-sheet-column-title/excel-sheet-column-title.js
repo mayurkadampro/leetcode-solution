@@ -6,11 +6,14 @@ var convertToTitle = function (columnNumber) {
     if (columnNumber < 27) return String.fromCharCode(columnNumber + 64);
     let result = '';
     while (columnNumber > 0) {
-        let temp = columnNumber % 26;
-        temp = temp == 0 ? 26 : temp;
-        result = String.fromCharCode(temp + 64) + result;
-        columnNumber -= temp;
-        columnNumber /= 26;
+        let r = columnNumber % 26;
+        let q = parseInt(columnNumber / 26);
+        if (r === 0) {
+            r = 26;
+            q--;
+        }
+        result = String.fromCharCode(64 + r) + result;
+        columnNumber = q;
     }
     return result;
 };
