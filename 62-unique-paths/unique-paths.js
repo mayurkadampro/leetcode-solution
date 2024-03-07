@@ -4,7 +4,7 @@
  * @return {number}
  */
 var uniquePaths = function (m, n) {
-    let pathArray = new Array(m).fill(0).map(() => new Array(n).fill(1));
+    let pathArray = new Array(m).fill(1).map(() => new Array(n).fill(1));
     let row = pathArray.length;
     let col = pathArray[0].length
     for (let i = 1; i < row; i++) {
