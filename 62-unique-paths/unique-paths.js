@@ -5,10 +5,12 @@
  */
 var uniquePaths = function (m, n) {
     let pathArray = new Array(m).fill(0).map(() => new Array(n).fill(1));
-    for (let i = 1; i < pathArray.length; i++) {
-        for (let j = 1; j < pathArray[0].length; j++) {
+    let row = pathArray.length;
+    let col = pathArray[0].length
+    for (let i = 1; i < row; i++) {
+        for (let j = 1; j < col; j++) {
             pathArray[i][j] = pathArray[i - 1][j] + pathArray[i][j - 1];
         }
     }
-    return pathArray[pathArray.length - 1][pathArray[0].length - 1];
+    return pathArray[row - 1][col - 1];
 };
