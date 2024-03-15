@@ -7,11 +7,10 @@ var minEatingSpeed = function (piles, h) {
     let left = 0;
     let right = findMax(piles);
 
-
     while (left < right) {
         let k = Math.floor(left + (right - left) / 2);
-        let eatBananaCount = eatBanana(piles, k);
-        if (eatBananaCount > h) {
+        let maxEatCount = maxEat(piles, k);
+        if (maxEatCount > h) {
             left = k + 1;
         } else {
             right = k;
@@ -20,7 +19,7 @@ var minEatingSpeed = function (piles, h) {
     return right;
 };
 
-var eatBanana = (piles, k) => {
+var maxEat = (piles, k) => {
     let maxEat = 0;
     for (let pile of piles) {
         maxEat += Math.ceil(pile / k);
