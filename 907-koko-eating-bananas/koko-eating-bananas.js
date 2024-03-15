@@ -4,7 +4,7 @@
  * @return {number}
  */
 var minEatingSpeed = function (piles, h) {
-    let left = 0;
+    let left = 1;
     let right = findMax(piles);
 
     while (left < right) {
