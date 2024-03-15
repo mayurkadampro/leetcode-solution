@@ -8,23 +8,24 @@ var minEatingSpeed = function (piles, h) {
     let right = findMax(piles);
 
     while (left < right) {
-        let k = Math.floor(left + (right - left) / 2);
-        let maxEatCount = maxEat(piles, k);
-        if (maxEatCount > h) {
+        const k = Math.floor(left + (right - left) / 2);
+        const hourSpent = maxEatingHours(piles, k);
+        if (hourSpent > h) {
             left = k + 1;
-        } else {
+        }
+        if (hourSpent <= h) {
             right = k;
         }
     }
-    return right;
+    return left;
 };
 
-var maxEat = (piles, k) => {
-    let maxEat = 0;
+var maxEatingHours = (piles, k) => {
+    let maxEatingHours = 0;
     for (let pile of piles) {
-        maxEat += Math.ceil(pile / k);
+        maxEatingHours += Math.ceil(pile / k);
     }
-    return maxEat;
+    return maxEatingHours;
 }
 
 var findMax = (piles) => {
