@@ -4,6 +4,7 @@
  * @return {number[]}
  */
 var xorQueries = function (arr, queries) {
+    // Prefix sum O(n) time and O(1) space.
     const res = [];
     const xorResults = [];
     xorResults[0] = arr[0];
@@ -17,4 +18,16 @@ var xorQueries = function (arr, queries) {
     }
 
     return res;
+
+
+    // straight forward solution which costs O(mn) time and O(1) space.
+    // const ret = new Uint16Array(queries.length);
+    // for (let i = 0; i < queries.length; ++i) {
+    //     let val = 0;
+    //     for (let j = queries[i][0]; j <= queries[i][1]; ++j) {
+    //         val ^= arr[j];
+    //     }
+    //     ret[i] = val;
+    // }
+    // return ret;
 };
