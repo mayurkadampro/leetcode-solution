@@ -5,16 +5,16 @@
  */
 var xorQueries = function (arr, queries) {
     // Prefix sum O(n) time and O(1) space.
-    const res = [];
-    const xorResults = [];
-    xorResults[0] = arr[0];
+    const prefix = [];
+    prefix[0] = arr[0];
 
     for (let i = 1; i < arr.length; i++) {
-        xorResults.push(arr[i] ^ xorResults[i - 1]);
+        prefix.push(arr[i] ^ prefix[i - 1]);
     }
 
+    const res = [];
     for (const [start, end] of queries) {
-        res.push(xorResults[start] ^ xorResults[end] ^ arr[start]);
+        res.push(prefix[start] ^ prefix[end] ^ arr[start]);
     }
 
     return res;
