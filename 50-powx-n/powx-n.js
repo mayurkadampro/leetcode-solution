@@ -10,5 +10,5 @@ var myPow = function (x, n) {
 
     const half = myPow(x, Math.floor(Math.abs(n) / 2));
     let result = n % 2 == 0 ? half * half : half * half * x;
-    return result = n >= 0 ? result : 1 / result
+    return result = n >= 0 ? result : 1 / result;
 };
