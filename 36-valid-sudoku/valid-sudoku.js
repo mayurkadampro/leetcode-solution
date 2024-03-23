@@ -13,21 +13,18 @@ var isValidSudoku = function (board) {
             let col = board[j][i];
             let box = board[3 * Math.floor(i / 3) + Math.floor(j / 3)][3 * (i % 3) + (j % 3)];
 
-            if (row !== '.' && rowsSet.has(row)) {
-                return false;
-            } else {
+            if (row !== '.') {
+                if (rowsSet.has(row)) return false;
                 rowsSet.add(row);
             }
 
-            if (col !== '.' && colsSet.has(col)) {
-                return false;
-            } else {
+            if (col !== '.') {
+                if (colsSet.has(col)) return false;
                 colsSet.add(col);
             }
 
-            if (box !== '.' && boxsSet.has(box)) {
-                return false;
-            } else {
+            if (box !== '.') {
+                if (boxsSet.has(box)) return false;
                 boxsSet.add(box);
             }
         }
