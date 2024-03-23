@@ -3,28 +3,28 @@
  * @return {boolean}
  */
 var isValidSudoku = function (board) {
-    for (let i = 0; i < 9; i++) {
-        let row = new Set();
-        let col = new Set();
-        let box = new Set();
-        for (let j = 0; j < 9; j++) {
-            let _row = board[i][j];
-            let _col = board[j][i];
-            let _box = board[3 * Math.floor(i / 3) + Math.floor(j / 3)][3 * (i % 3) + (j % 3)];
+    for (let i = 0; i < board.length; i++) {
+        let rowsSet = new Set();
+        let colsSet = new Set();
+        let boxsSet = new Set();
 
-            if (_row != '.') {
-                if (row.has(_row)) return false;
-                row.add(_row);
-            }
-            if (_col != '.') {
-                if (col.has(_col)) return false;
-                col.add(_col);
-            }
-            if (_box != '.') {
-                if (box.has(_box)) return false;
-                box.add(_box);
-            }
+        for (let j = 0; j < board.length; j++) {
+            let row = board[i][j];
+            let col = board[j][i];
+
+            if (row !== '.' && rowsSet.has(row)) return false;
+            rowsSet.add(row);
+
+            if (col !== '.' && colsSet.has(col)) return false;
+            colsSet.add(col);
+
+            let box = board[3 * Math.floor(i / 3) + Math.floor(j / 3)][3 * (i % 3) + (j % 3)];
+
+            if (box !== '.' && boxsSet.has(box)) return false;
+            boxsSet.add(box);
         }
+
+
     }
     return true;
 };
