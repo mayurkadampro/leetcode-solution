@@ -11,7 +11,7 @@ var singleNonDuplicate = function (nums) {
         if (nums[mid] === nums[mid ^ 1]) {
             left = mid + 1;
         } else {
-            right = mid - 1
+            right = mid - 1;
         }
     }
     return nums[left];
