@@ -3,15 +3,20 @@
  * @return {number}
  */
 var maxProduct = function (nums) {
-    let n = nums.length; // size of array.
-    let pre = 1, suff = 1;
+    let n = nums.length - 1;
+    let prefix = 1;
+    let suffix = 1;
     let ans = Number.MIN_SAFE_INTEGER;
-    for (let i = 0; i < nums.length; i++) {
-        if (pre === 0) pre = 1;
-        if (suff === 0) suff = 1;
-        pre *= nums[i];
-        suff *= nums[n - i - 1];
-        ans = Math.max(ans, Math.max(pre, suff));
+
+    for (let i = 0; i <= n; i++) {
+        if (prefix === 0) prefix = 1;
+        if (suffix === 0) suffix = 1;
+
+        prefix *= nums[i];
+        suffix *= nums[n - i];
+
+        ans = Math.max(ans, Math.max(prefix, suffix));
     }
+
     return ans;
 };
