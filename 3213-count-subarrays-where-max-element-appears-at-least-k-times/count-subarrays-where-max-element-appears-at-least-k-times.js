@@ -4,21 +4,24 @@
  * @return {number}
  */
 var countSubarrays = function (nums, k) {
-    let mx = Math.max(...nums);
-    let ans = 0;
-    let l = 0;
-    let r = 0;
-    const n = nums.length;
+    // Sliding Window
+    let count = 0;
+    let maxCount = 0;
+    let maxElement = Math.max(...nums);
+    let windowStart = 0;
 
-    while (r < n) {
-        k -= nums[r] === mx ? 1 : 0;
-        r++;
-        while (k === 0) {
-            k += nums[l] === mx ? 1 : 0;
-            l++;
+    for (let windowEnd = 0; windowEnd < nums.length; windowEnd++) {
+        if (nums[windowEnd] === maxElement) {
+            maxCount++;
         }
-        ans += l;
-    }
 
-    return ans;
+        while (maxCount >= k) {
+            count += nums.length - windowEnd;
+            if (nums[windowStart] === maxElement) {
+                maxCount--;
+            }
+            windowStart++;
+        }
+    }
+    return count;
 };
