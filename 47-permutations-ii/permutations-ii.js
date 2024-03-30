@@ -3,33 +3,41 @@
  * @return {number[][]}
  */
 var permuteUnique = function (nums) {
-    const res = [];
-    const length = nums.length;
-    const visited = new Array(length).fill(0);
-    const memo = new Set();
-    traverse(nums, res, [], length, visited, memo);
-    return res;
+    let result = [];
+    let visited = new Array(nums.length).fill(false);
+    nums.sort((a, b) => a - b);
+    permutations([], nums, result, visited);
+    return result;
 };
 
-const traverse = (nums, res, temp, length, visited, memo) => {
-    if (temp.length === length) {
-        res.push([...temp]);
+function permutations(current, remaining, result, visited) {
+    if (remaining.length === current.length) {
+        result.push(current.slice());
         return;
-
     }
+    else {
+        // Loop through remaining elements
+        for (let i = 0; i < remaining.length; i++) {
 
-    for (let i = 0; i < length; i++) {
-        if (visited[i]) continue;
-        visited[i] = 1;
-        temp.push(nums[i]);
-        if (memo.has(temp.join(''))) {
-            temp.pop();
-            visited[i] = 0;
-            continue;
+            if (visited[i] || i > 0 && remaining[i] === remaining[i - 1] && !visited[i - 1]) {
+                continue;
+            }
+
+            // Mark arr ith index as true visited
+            visited[i] = true;
+
+            // Insert the iTH element onto the end of current
+            current.push(remaining[i]);
+
+            // Recurse with inserted element removed
+            permutations(current, remaining, result, visited);
+
+            // Remove last inserted element for next iteration
+            current.pop();
+
+            // After pop Mark arr ith index as false visited
+            visited[i] = false;
+
         }
-        memo.add(temp.join(''));
-        traverse(nums, res, temp, length, visited, memo);
-        temp.pop();
-        visited[i] = 0;
     }
 }
