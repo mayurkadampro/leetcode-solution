@@ -7,6 +7,9 @@ var subsets = function (nums) {
     generatePowerset(nums, [], 0, result);
     return result;
 };
+
+// Include-Exclude Pattern
+// https://leetcode.com/problems/subsets/solutions/4765571/beats-100-0ms-include-exclude-pattern
 var generatePowerset = (nums, currentSet, index, result) => {
     if (index === nums.length) {
         result.push(currentSet.slice());
