@@ -9,19 +9,26 @@ var permute = function (nums) {
 };
 
 function permutations(current, remaining, result) {
-    if (remaining.length <= 0) result.push(current.slice());
-    else {
-        // Loop through remaining elements
-        for (let i = 0; i < remaining.length; i++) {
+    if (remaining.length === current.length) {
+        result.push(current.slice());
+        return
+    }
+
+    // Loop through remaining elements
+    for (let i = 0; i < remaining.length; i++) {
+
+        if (!current.includes(remaining[i])) {
             // Insert the iTH element onto the end of current
             current.push(remaining[i]);
 
             // Recurse with inserted element removed
-            permutations(current.slice(), remaining.slice(0, i).concat(remaining.slice(i + 1)), result);
+            permutations(current, remaining, result);
 
             // Remove last inserted element for next iteration
             current.pop();
-
         }
     }
 }
+
+
+// Alternate Solution
