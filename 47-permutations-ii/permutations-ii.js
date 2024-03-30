@@ -14,30 +14,30 @@ function permutations(current, remaining, result, visited) {
     if (remaining.length === current.length) {
         result.push(current.slice());
         return;
-    } else {
-        // Loop through remaining elements
-        for (let i = 0; i < remaining.length; i++) {
+    }
 
-            // check for visited
-            if (visited[i] || i > 0 && remaining[i] === remaining[i - 1] && !visited[i - 1]) {
-                continue;
-            }
+    // Loop through remaining elements
+    for (let i = 0; i < remaining.length; i++) {
 
-            // Mark ith index as true visited
-            visited[i] = true;
-
-            // Insert the iTH element onto the end of current
-            current.push(remaining[i]);
-
-            // Recurse with inserted element removed
-            permutations(current, remaining, result, visited);
-
-            // Remove last inserted element for next iteration
-            current.pop();
-
-            // After pop Mark ith index as false visited
-            visited[i] = false;
-
+        // check for visited
+        if (visited[i] || i > 0 && remaining[i] === remaining[i - 1] && !visited[i - 1]) {
+            continue;
         }
+
+        // Mark ith index as true visited
+        visited[i] = true;
+
+        // Insert the iTH element onto the end of current
+        current.push(remaining[i]);
+
+        // Recurse with inserted element removed
+        permutations(current, remaining, result, visited);
+
+        // Remove last inserted element for next iteration
+        current.pop();
+
+        // After pop Mark ith index as false visited
+        visited[i] = false;
+
     }
 }
