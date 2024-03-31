@@ -22,27 +22,27 @@ var subsets = function (nums) {
 
 // Include-Exclude Pattern
 // https://leetcode.com/problems/subsets/solutions/4765571/beats-100-0ms-include-exclude-pattern
-var generatePowerset = (nums, currentSet, index, result) => {
-    if (index === nums.length) {
-        result.push(currentSet.slice());
-        return;
-    }
+// var generatePowerset = (nums, currentSet, index, result) => {
+//     if (index === nums.length) {
+//         result.push(currentSet.slice());
+//         return;
+//     }
 
-    // include current element in set
-    currentSet.push(nums[index]);
-    generatePowerset(nums, currentSet, index + 1, result);
-    currentSet.pop();
+//     // include current element in set
+//     currentSet.push(nums[index]);
+//     generatePowerset(nums, currentSet, index + 1, result);
+//     currentSet.pop();
 
-    // exclude the current element in set
-    generatePowerset(nums, currentSet, index + 1, result);
-}
+//     // exclude the current element in set
+//     generatePowerset(nums, currentSet, index + 1, result);
+// }
 
 // Recursion (BackTracking)
-// var generatePowerset = (nums, currentSet, startIndex, result) => {
-//     result.push([...currentSet]);
-//     for (let i = startIndex; i < nums.length; i++) {
-//         currentSet.push(nums[i]);
-//         generatePowerset(nums, currentSet, i + 1, result);
-//         currentSet.pop();
-//     }
-// }
+var generatePowerset = (nums, currentSet, startIndex, result) => {
+    result.push([...currentSet]);
+    for (let i = startIndex; i < nums.length; i++) {
+        currentSet.push(nums[i]);
+        generatePowerset(nums, currentSet, i + 1, result);
+        currentSet.pop();
+    }
+}
