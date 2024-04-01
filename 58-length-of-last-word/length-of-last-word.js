@@ -8,5 +8,8 @@ var lengthOfLastWord = function (s) {
     // return arr[arr.length-1].length;
 
     // 2nd solution
-    return s.trim().split(" ").pop().length;
+    // return s.trim().split(" ").pop().length;
+
+    // 3rd solution
+    return s.trim().split(' ').at(-1).length;
 };
