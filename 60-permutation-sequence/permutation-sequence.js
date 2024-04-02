@@ -14,11 +14,14 @@ var getPermutation = function (n, k) {
 
     }
 
-    for (let i = n; i > 0; i--) {
-        index = Math.ceil(k / factorial[i - 1]); // decide to use which permutation set
-        result += nums[index - 1];
-        nums.splice(index - 1, 1);
-        k -= (factorial[i - 1] * (index - 1));
+    k--;
+    while (nums.length > 0) {
+        const availableLen = nums.length - 1;
+        let swapValue = Math.floor(k / factorial[availableLen]);
+        result += nums[swapValue]
+        nums.splice(swapValue, 1);
+        const remainder = k % factorial[availableLen];
+        k = k % factorial[availableLen];
     }
     return result;
 };
