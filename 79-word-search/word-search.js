@@ -4,7 +4,6 @@
  * @return {boolean}
  */
 var exist = function (board, word) {
-    if (board.length === 0) return false;
     let result = false;
 
     var validate = (row, col, k) => {
