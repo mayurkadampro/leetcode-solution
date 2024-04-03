@@ -37,7 +37,7 @@ var exist = function (board, word) {
     for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[0].length; j++) {
             if (board[i][j] === word[0]) {
-                if (validate(i, j, 0, board, word, result)) return true;
+                if (validate(i, j, 0)) return true;
             }
         }
     }
