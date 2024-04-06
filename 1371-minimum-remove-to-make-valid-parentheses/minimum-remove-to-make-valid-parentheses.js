@@ -2,30 +2,27 @@
  * @param {string} s
  * @return {string}
  */
-var minRemoveToMakeValid = function (str) {
-    const stack = [];
-    const splitted_str = str.split("");
-    for (let i = 0; i < str.length; i++) {
-        const char = str[i];
-        // if curr char is (  then we will push into our stack.
-        if (char === "(") stack.push(i);
-        else if (char === ")") {
+var minRemoveToMakeValid = function (s) {
+    let stack = [];
+    let splitArray = s.split("");
+
+    for (let i = 0; i < s.length; i++) {
+        const char = s[i];
+        if (char === "(") {
+            stack.push(i);
+        } else if (char === ")") {
             if (stack.length === 0) {
-                // if out stack is empty then we will make ) as ''
-                splitted_str[i] = "";
+                splitArray[i] = "";
             } else {
-                //! if stack is not empty then we will pop top of the stack
                 stack.pop();
             }
         }
-    };
+    }
 
-    // if we have extra ( bracket we will remove it by making it as ''
     for (let i = 0; i < stack.length; i++) {
         const char = stack[i];
-        splitted_str[char] = "";
+        splitArray[char] = "";
     }
-    return splitted_str.join(""); // at last we will join the splitted_str
 
-
+    return splitArray.join("");
 };
