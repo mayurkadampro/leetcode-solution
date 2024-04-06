@@ -11,7 +11,6 @@ var getPermutation = function (n, k) {
     for (let i = 1; i <= n; i++) {
         factorial[i] = i * factorial[i - 1];
         nums.push(i);
-
     }
 
     k--;
