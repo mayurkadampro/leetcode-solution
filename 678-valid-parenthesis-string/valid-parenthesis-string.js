@@ -32,4 +32,9 @@ var checkValidString = function (s) {
     };
 
     return true;
+
+    // Gready solution
+    let left_min = 0;
+    let left_max = 0;
+    
 };
