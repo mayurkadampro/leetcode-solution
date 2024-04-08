@@ -4,6 +4,10 @@
  * @return {character}
  */
 var nextGreatestLetter = function (letters, target) {
+    // Simple way -> Time Complexity: O(n)
+    return letters.find((letter) => letter > target) || letters[0];
+
+    // Binary Search -> Time Complexity: O(logN)
     let left = 0;
     let right = letters.length - 1;
     let ans = "$";
