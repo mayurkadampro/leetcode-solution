@@ -11,10 +11,6 @@ var timeRequiredToBuy = function (tickets, k) {
             tickets[index] = tickets[index] - 1;
             count += 1;
         }
-        if (tickets[k] === 0) {
-            return count;
-        }
-
         index = index === tickets.length - 1 ? 0 : index + 1;
     }
 
