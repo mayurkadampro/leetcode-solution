@@ -8,7 +8,7 @@ var timeRequiredToBuy = function (tickets, k) {
     let index = 0;
     while (tickets[k] !== 0) {
         if (tickets[index] !== 0) {
-            tickets[index] = tickets[index] - 1;
+            tickets[index] -= 1;
             count += 1;
         }
         index = index === tickets.length - 1 ? 0 : index + 1;
