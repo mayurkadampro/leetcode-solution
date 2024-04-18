@@ -2,12 +2,7 @@
  * @param {number[][]} grid
  * @return {number}
  */
-var maxAreaOfIsland = function (grid) {
-
-};
-
-
-var maxAreaOfIsland = (grid) => {
+const maxAreaOfIsland = function (grid) {
     let maxArea = 0;
     for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid[i].length; j++) {
@@ -19,14 +14,14 @@ var maxAreaOfIsland = (grid) => {
     return maxArea;
 };
 
-const outOfBounds = (grid, r, c) => {
+const outOfBounds = function (grid, r, c) {
     if (r < 0 || c < 0) return true;
     if (r >= grid.length || c >= grid[0].length) return true;
     if (grid[r][c] != 1) return true;
     return false;
 }
 
-const dfs = (grid, row, col) => {
+const dfs = function (grid, row, col) {
     if (outOfBounds(grid, row, col)) return 0;
 
     grid[row][col] = "";
