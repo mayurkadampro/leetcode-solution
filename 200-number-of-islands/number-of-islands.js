@@ -30,10 +30,8 @@ const dfs = function (grid, row, col) {
 
     grid[row][col] = "";
 
-    var up = dfs(grid, row + 1, col);
-    var down = dfs(grid, row - 1, col);
-    var right = dfs(grid, row, col + 1);
-    var left = dfs(grid, row, col - 1);
-
-    return 1 + up + down + left + right;
+    dfs(grid, row + 1, col);
+    dfs(grid, row - 1, col);
+    dfs(grid, row, col + 1);
+    dfs(grid, row, col - 1);
 }
