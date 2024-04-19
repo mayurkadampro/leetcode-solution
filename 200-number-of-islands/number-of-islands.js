@@ -20,7 +20,7 @@ const numIslands = function (grid) {
 const outOfBounds = function (grid, r, c) {
     if (r < 0 || c < 0) return true;
     if (r >= grid.length || c >= grid[0].length) return true;
-    if (grid[r][c] != 1) return true;
+    if (grid[r][c] != "1") return true;
     return false;
 }
 
