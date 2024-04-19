@@ -1,6 +1,8 @@
 
 var MinStack = function () {
+    this._top = -1;
     this.stack = [];
+    
 };
 
 /** 
