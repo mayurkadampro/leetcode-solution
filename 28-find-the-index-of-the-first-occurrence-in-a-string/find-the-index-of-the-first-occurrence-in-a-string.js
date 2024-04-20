@@ -4,5 +4,10 @@
  * @return {number}
  */
 var strStr = function (haystack, needle) {
-    return haystack.indexOf(needle);
+    // Solution #1 - Built-in function
+    // return haystack.indexOf(needle);
+
+    // Solution #2 - Find Position with Regex
+    const regex = new RegExp(needle);
+    return haystack.search(regex);
 };
