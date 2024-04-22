@@ -5,26 +5,15 @@
 var evalRPN = function (tokens) {
     // Monotonic Stack solution
     let stack = [];
-    let operators = new Set();
-    operators.add("+");
-    operators.add("-");
-    operators.add("*");
-    operators.add("/");
-
-    for (let i = 0; i < tokens.length; i++) {
-        if (operators.has(tokens[i])) {
-            let firstDigit = stack.pop();
-            let secondDigit = stack.pop();
-
-            stack.push(resolves(secondDigit, firstDigit, tokens[i]));
-
+    for (const token of tokens) {
+        if (token.length === 1 && token.charCodeAt(0) < 48) {
+            const integer2 = stack.pop();
+            const integer1 = stack.pop();
+            stack.push(resolves(integer1, integer2, token));
         } else {
-            stack.push(parseInt(tokens[i], 10));
+            stack.push(parseInt(token, 10));
         }
-
-
     }
-
     return stack.pop();
 };
 
