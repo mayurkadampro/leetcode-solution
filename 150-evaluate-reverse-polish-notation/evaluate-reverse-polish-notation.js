@@ -11,7 +11,7 @@ var evalRPN = function (tokens) {
             const integer1 = stack.pop();
             stack.push(resolves(integer1, integer2, token));
         } else {
-            stack.push(parseInt(token, 10));
+            stack.push(parseInt(token));
         }
     }
     return stack.pop();
