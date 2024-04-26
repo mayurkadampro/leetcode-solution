@@ -15,7 +15,6 @@ const helper = function (s, result, str, index) {
         result.push(str);
         return;
     } else if (isAlpha(s[index])) {
-
         let up = str + s[index].toUpperCase();
         let low = str + s[index].toLowerCase();
         helper(s, result, up, index + 1);
@@ -27,5 +26,5 @@ const helper = function (s, result, str, index) {
 }
 
 const isAlpha = function (ch) {
-    return /[a-zA-Z]/i.test(ch)
+    return /[a-zA-Z]/g.test(ch)
 }
