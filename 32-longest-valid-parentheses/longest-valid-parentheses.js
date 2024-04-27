@@ -10,7 +10,7 @@ const longestValidParentheses = function (S) {
         if (S[i] === "(") {
             stack.push(i);
         } else if (S[i] === ")") {
-            if (stack.length === 0) {
+            if (!stack.length) {
                 validStartIndex = i;
             } else {
                 stack.pop();
