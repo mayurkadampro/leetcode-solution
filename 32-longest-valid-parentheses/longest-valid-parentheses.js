@@ -12,13 +12,13 @@ const longestValidParentheses = function (S) {
         } else if (S[i] === ")") {
             if (stack.length === 0) {
                 validStartIndex = i;
-                continue;
-            }
-            stack.pop();
-            if (stack.length === 0) {
-                count = Math.max(count, i - validStartIndex);
             } else {
-                count = Math.max(count, i - stack[stack.length - 1]);
+                stack.pop();
+                if (stack.length === 0) {
+                    count = Math.max(count, i - validStartIndex);
+                } else {
+                    count = Math.max(count, i - stack[stack.length - 1]);
+                }
             }
         }
     }
