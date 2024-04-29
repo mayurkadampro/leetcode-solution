@@ -23,12 +23,22 @@ var hasCycle = function (head) {
     // return false;
 
     // One Pointer
-    let fast = head;
+    // let fast = head;
+    // while(fast && fast.next){
+    //     head = head.next;
+    //     fast = fast.next.next;
+    //     if(head === fast) return true;
+    // }
+    // return false;
 
-    while(fast && fast.next){
-        head = head.next;
-        fast = fast.next.next;
-        if(head === fast) return true;
+    // Hash Table
+    let visited = new Set();
+    let current = head;
+    while (current !== null) {
+        if (visited.has(current)) return true;
+        visited.add(current);
+        current = current.next;
     }
+
     return false;
 };
