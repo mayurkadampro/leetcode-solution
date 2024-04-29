@@ -14,9 +14,9 @@ var getSum = function (a, b) {
     return a ^ b;
 
     // Math
-    if (a < 0 && b == 0)
-        return a;
-    if (b < 0 && a == 0)
-        return b;
-        
+    // if (a < 0 && b == 0)
+    //     return a;
+    // if (b < 0 && a == 0)
+    //     return b;
+    // return Math.log(Math.exp(a) * Math.exp(b))
 };
