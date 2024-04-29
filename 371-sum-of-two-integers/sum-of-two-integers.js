@@ -7,9 +7,9 @@ var getSum = function (a, b) {
     // Bit Manipulation
     let carry;
     while ((a & b) !== 0) {
-        carry = (a & b) << 1;
+        carry = a & b;
         a = a ^ b;
-        b = carry;
+        b = carry << 1;
     }
     return a ^ b;
 
