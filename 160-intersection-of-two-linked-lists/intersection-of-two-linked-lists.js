@@ -17,5 +17,5 @@ var getIntersectionNode = function (headA, headB) {
         a = !a ? headB : a.next
         b = !b ? headA : b.next
     }
-    return a
+    return a;
 };
