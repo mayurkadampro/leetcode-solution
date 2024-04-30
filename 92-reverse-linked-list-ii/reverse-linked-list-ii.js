@@ -16,9 +16,9 @@ var reverseBetween = function (list, left, right) {
     let head = dummy;
     let curr = 1;
 
-    while (curr++ < left) { 
-        
-        head = head.next 
+    while (curr < left) {
+        curr++;
+        head = head.next
     };
 
     let tail = head.next;
