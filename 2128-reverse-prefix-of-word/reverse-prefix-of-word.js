@@ -6,9 +6,8 @@
 var reversePrefix = function (word, ch) {
     let chIndex = word.indexOf(ch);
     if (chIndex < 0) return word
-    let firstWord = word.substring(0, chIndex + 1);
-    let secondWord = word.substring(chIndex + 1, word.length);
-    
+    let firstWord = word.slice(0, chIndex + 1);
+    let secondWord = word.slice(chIndex + 1, word.length);
     return reverseStr(firstWord) + secondWord;
 };
 
