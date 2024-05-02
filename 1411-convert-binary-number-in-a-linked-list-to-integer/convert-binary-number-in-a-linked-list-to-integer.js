@@ -10,14 +10,33 @@
  * @return {number}
  */
 var getDecimalValue = function (head) {
-    let current = reverseList(head);
-    let index = 0;
+    // 1st solution by reverse linkedlist
+    // let current = reverseList(head);
+    // let index = 0;
+    // let result = 0;
+    // while (current) {
+    //     let val = current.val;
+    //     result += Math.pow(2, index) * val;
+    //     current = current.next;
+    //     index++;
+    // }
+
+    // return result;
+
+    // 2nd solution by cal length
+    let current = head;
+    let length = 0;
     let result = 0;
+
     while (current) {
-        let val = current.val;
-        result += Math.pow(2, index) * val;
         current = current.next;
-        index++;
+        length++;
+    }
+
+    current = head
+    while (current) {
+        result += (2 ** --length) * current.val
+        current = current.next;
     }
 
     return result;
