@@ -11,20 +11,42 @@
  * @return {number[][]}
  */
 var zigzagLevelOrder = function (root) {
+    // handle edge case
     if (root == null) return [];
+
+    // create result and queue, and flag for zigzag level
     let queue = [root]
     let result = [];
-    let index = 1;
+    let leftToRight = true;
+
+    // loop while queue is not empty
     while (queue.length > 0) {
-        let len = queue.length, level = [];
+
+
+        // calc number of nodes at queue level
+        let len = queue.length;
+
+        // create level size array
+        let level = [];
+
+        // loop until all nodes at current level has traversed
         for (let i = 0; i < len; i++) {
+
+            // pop from left of queue (FIFO)
             let node = queue.shift();
-            level.push(node.val);
+
+            // push or unshift values to sub-array depending on traversal order
+            if (leftToRight) level.push(node.val);
+            else level.unshift(node.val);
+
+            // push left and right child nodes of current node (if exist)
             if (node.left) queue.push(node.left);
             if (node.right) queue.push(node.right);
         }
-        index++;
-        if(index % 2 !== 0) level.reverse();
+
+        // switch direction, and push sub-array to output array
+        leftToRight = !leftToRight;
+        // finally push each level values into final result
         result.push(level);
     }
     return result;
