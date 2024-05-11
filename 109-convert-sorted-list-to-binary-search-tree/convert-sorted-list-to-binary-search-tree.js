@@ -34,7 +34,6 @@ const helper = (start, end) => {
     if (start === end) return null;
     const mid = getMiddle(start, end);
     const node = new TreeNode(mid.val);
-
     node.left = helper(start, mid);
     node.right = helper(mid.next, end);
     return node;
