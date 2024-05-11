@@ -8,7 +8,7 @@ var kthSmallest = function (matrix, k) {
     let col = matrix[0].length - 1;
     let lo = matrix[0][0];
     let hi = matrix[row][col];
-    console.log(lo, hi);
+
     while (lo < hi) {
         let mid = lo + Math.floor((hi - lo) / 2);
         let count = 0;
