@@ -13,15 +13,25 @@
  * @return {number}
  */
 var rangeSumBST = function (root, low, high) {
-    let bstArr = [];
-    let rangeSum = 0;
-    inorderTraversal(root, bstArr);
-    for (let value of bstArr) {
-        if (value >= low && value <= high) {
-            rangeSum += value;
-        }
-    }
-    return rangeSum;
+    // By Inorder
+    // let bstArr = [];
+    // let rangeSum = 0;
+    // inorderTraversal(root, bstArr);
+    // for (let value of bstArr) {
+    //     if (value >= low && value <= high) {
+    //         rangeSum += value;
+    //     }
+    // }
+    // return rangeSum;
+
+    // Another
+    if (!root) return 0;
+
+    const currentVal = (root.val >= low && root.val <= high) ? root.val : 0;
+
+    const leftSum = rangeSumBST(root.left, low, high);
+    const rightSum = rangeSumBST(root.right, low, high);
+    return currentVal + leftSum + rightSum;
 };
 
 const inorderTraversal = (root, result) => {
