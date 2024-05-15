@@ -15,9 +15,10 @@ var pruneTree = function (root) {
 };
 
 const helper = (root) => {
-    if (root === null) return null;
-    if (root.left) root.left = helper(root.left);
-    if (root.right) root.right = helper(root.right);
-    if (!root.left && !root.right && root.val === 0) return null;
-    return root;
+
+    if (!root) return root;
+    root.left = helper(root.left);
+    root.right = helper(root.right);
+
+    return (root.val || root.left || root.right) ? root : null;
 }
