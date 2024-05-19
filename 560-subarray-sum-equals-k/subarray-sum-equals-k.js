@@ -9,6 +9,7 @@ var subarraySum = function (nums, k) {
     let kMap = new Map();
     kMap.set(0, 1);
 
+
     for (let value of nums) {
         sum += value;
         if (kMap.has(sum - k)) {
