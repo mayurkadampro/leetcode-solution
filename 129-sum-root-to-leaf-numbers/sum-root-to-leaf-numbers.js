@@ -10,9 +10,22 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var sumNumbers = function (root, num = 0) {
-    if (!root) return 0;
-    num = num * 10 + root.val;
-    if (!root.left && !root.right) return num;
-    return sumNumbers(root.left, num) + sumNumbers(root.right, num);
+var sumNumbers = function (root) {
+    let answer = 0;
+
+    const helper = (root, numSoFar) => {
+        if (!root) return root;
+
+        let newNumber = numSoFar * 10 + root.val;
+        if (root.left === null && root.right === null) {
+            answer += newNumber;
+            return
+        }
+        helper(root.left, newNumber);
+        helper(root.right, newNumber);
+    }
+
+    helper(root, 0);
+    return answer;
 };
+
