@@ -10,7 +10,7 @@ var subarraysDivByK = function (nums, k) {
 
     // Initialize map to store the first occurrence of remainders
     const kMap = new Map();
-    kMap.set(0, 1); // Initialize the map with remainder 0 at index -1.
+    kMap.set(0, 1); // Initialize the map with remainder 0 at index 1. it is special case for k value mod ex, k % k = 0
 
 
     for (let value of nums) {
