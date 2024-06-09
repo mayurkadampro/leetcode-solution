@@ -2,33 +2,26 @@
  * @param {number} n
  * @return {string[]}
  */
-var generateParenthesis = function (n) {
-    const combinations = [];
-    // Here we know we can only start with an opening bracket => use 1 open:
-    // but we can also start with an empty string and 0 like so:
-    buildCombinationFrom('(', 1, 0, n, combinations);
-    return combinations;
+const generateParenthesis = function (n) {
+    const result = [];
+    helper("(", 1, 0, n, result);
+    return result;
 };
 
-var buildCombinationFrom = (currStr, openUsed, closeUsed, n, combinations) => {
-    // Base case: when we reach 2n length
-    if (currStr.length === 2 * n) {
-        // Add the string to the list of combination:
-        combinations.push(currStr);
-        // Exit from this recursive call.
+const helper = (currStr, openBracketCount, closeBracketCount, n, result) => {
+    // Base Case
+    if (openBracketCount === n && closeBracketCount === n) {
+        result.push(currStr);
         return;
     }
 
-    // Case: when we can add more opening bracket:
-    // If we haven't used all opening bracket (n pairs = n opens)
-    if (openUsed < n) {
-        // Add 1 opening, update opening used:
-        buildCombinationFrom(currStr + '(', openUsed + 1, closeUsed, n, combinations);
+    if (openBracketCount < n) {
+        helper(currStr + "(", openBracketCount + 1, closeBracketCount, n, result);
     }
-    // Case: when we can add more closing bracket:
-    // If we have more opening than closing:
-    if (openUsed > closeUsed) {
-        // Add 1 closing, update closing used:
-        buildCombinationFrom(currStr + ')', openUsed, closeUsed + 1, n, combinations);
+
+    if (openBracketCount > closeBracketCount) {
+        helper(currStr + ")", openBracketCount, closeBracketCount + 1, n, result);
     }
 }
+
+
