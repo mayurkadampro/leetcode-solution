@@ -23,7 +23,7 @@ var mergeTwoLists = function (list1, list2) {
     // }
 
     // # iteratively
-    let dummyNode = { val: -1, next: null }
+    let dummyNode = { val: -1, next: null };
     let current = dummyNode;
 
     while (list1 && list2) {
@@ -38,6 +38,4 @@ var mergeTwoLists = function (list1, list2) {
     }
     current.next = list1 || list2;
     return dummyNode.next;
-
-
 };
