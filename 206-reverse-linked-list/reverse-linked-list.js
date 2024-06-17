@@ -12,7 +12,7 @@
 var reverseList = function (head) {
     let prev = null;
     let curr = head;
-    let next = null;
+    let next = head;
 
     while (curr) {
         next = curr.next;
@@ -21,6 +21,5 @@ var reverseList = function (head) {
         curr = next;
     }
 
-    head = prev;
     return prev;
 };
