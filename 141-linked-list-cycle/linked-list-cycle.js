@@ -12,17 +12,17 @@
  */
 var hasCycle = function (head) {
     // Two Pointer
-    let slow = head;
-    let fast = head;
+    // let slow = head;
+    // let fast = head;
 
-    while (fast !== null && fast.next !== null) {
-        slow = slow.next;
-        fast = fast.next.next;
-        if (slow === fast) return true;
-    }
-    return false;
+    // while (fast !== null && fast.next !== null) {
+    //     slow = slow.next;
+    //     fast = fast.next.next;
+    //     if (slow === fast) return true;
+    // }
+    // return false;
 
-    // One Pointer
+    // One Pointer & head
     // let fast = head;
     // while(fast && fast.next){
     //     head = head.next;
@@ -32,13 +32,14 @@ var hasCycle = function (head) {
     // return false;
 
     // Hash Table
-    // let visited = new Set();
-    // let current = head;
-    // while (current !== null) {
-    //     if (visited.has(current)) return true;
-    //     visited.add(current);
-    //     current = current.next;
-    // }
+    let visited = new Set();
+    let current = head;
 
-    // return false;
+    while(current && current.next){
+        if(visited.has(current)) return true;
+        visited.add(current);
+        current = current.next;
+    }
+
+    return false;
 };
