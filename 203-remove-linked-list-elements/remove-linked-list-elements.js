@@ -11,18 +11,53 @@
  * @return {ListNode}
  */
 var removeElements = function (head, val) {
-    if (!head) return head;
-    let dummy = head;
-    let current = head;
-    let prev = dummy;
+    if (!head) return null;
 
-    while (current != null) {
-        if (current.val === val) {
+    let current = head;
+    let prev = null;
+    while (current) {
+        if (prev && current.val === val) {
             prev.next = current.next;
         } else {
             prev = current;
         }
         current = current.next;
     }
-    return dummy.val === val ? dummy.next : dummy;
+
+    return head.val == val ? head.next : head;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // if (!head) return head;
+    // let dummy = head;
+    // let current = head;
+    // let prev = dummy;
+
+    // while (current != null) {
+    //     if (current.val === val) {
+    //         prev.next = current.next;
+    //     } else {
+    //         prev = current;
+    //     }
+    //     current = current.next;
+    // }
+    // return dummy.val === val ? dummy.next : dummy;
 };
