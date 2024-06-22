@@ -12,6 +12,7 @@
  * @return {ListNode}
  */
 var getIntersectionNode = function (headA, headB) {
+    // Non Intuition solution
     // let a = headA, b = headB;
     // while (a !== b) {
     //     a = !a ? headB : a.next
@@ -19,6 +20,7 @@ var getIntersectionNode = function (headA, headB) {
     // }
     // return a;
 
+    // Intuition solution
     let current = headA;
     let lenOfA = 0;
     while (current) {
@@ -60,9 +62,4 @@ var getIntersectionNode = function (headA, headB) {
             headA = headA.next;
         }
     }
-
-
-
-
-
 };  
