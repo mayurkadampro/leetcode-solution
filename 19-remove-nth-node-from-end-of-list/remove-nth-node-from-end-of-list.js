@@ -37,11 +37,9 @@ var removeNthFromEnd = function (head, n) {
         len++;
         if (len === matchIdx) {
             prev.next = current.next;
-
         } else {
             prev = current;
         }
-
         current = current.next;
     }
 
