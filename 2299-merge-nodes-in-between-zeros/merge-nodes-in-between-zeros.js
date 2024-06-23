@@ -10,13 +10,11 @@
  * @return {ListNode}
  */
 var mergeNodes = function (head) {
-    if (!head) return head;
-
-    let current = head;
-    let prev = null;
     let sum = 0;
-    let dummyNode = new ListNode(0, null);
-    let newNode = dummyNode;
+    let current = head;
+    let dummy = new ListNode(0, null);
+    let newNode = dummy;
+
     while (current) {
         if (current.val === 0) {
             if (sum != 0) {
@@ -27,9 +25,8 @@ var mergeNodes = function (head) {
         } else {
             sum += current.val;
         }
-        prev = current;
         current = current.next;
     }
 
-    return dummyNode.next;
+    return dummy.next;
 };
