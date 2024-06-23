@@ -16,9 +16,7 @@ var nodesBetweenCriticalPoints = function (head) {
     let idx = [];
 
     while (current && current.next) {
-        if (prev && (current.val > prev.val) && (current.val > current.next.val)) {
-            idx.push(index);
-        } else if (prev && (current.val < prev.val) && (current.val < current.next.val)) {
+        if (prev && ((current.val > prev.val) && (current.val > current.next.val)) || (prev && (current.val < prev.val) && (current.val < current.next.val))) {
             idx.push(index);
         }
         index++;
