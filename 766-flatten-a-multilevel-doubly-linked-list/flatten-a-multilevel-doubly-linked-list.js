@@ -14,20 +14,19 @@
  */
 var flatten = function (head) {
     let current = head;
-    let stack = [];  //store all rest part of linkedlist nodes when has child
+    let stack = [];
 
     while (current) {
         if (current.child) {
-            if (current.next) stack.push(current.next); //must check cur.next is null or not before added to stack
+            if (current.next) stack.push(current.next);
             current.next = current.child;
-            current.next.prev = current; // because it is doubly linkedlist
-            current.child = null; //already assigned to next so now no child anymore. se
-
-        } else if (!current.next && stack.length != 0) {
+            current.child.prev = current;
+            current.child = null;
+        } else if (current.next === null && stack.length !== 0) {
             current.next = stack.pop();
-            current.next.prev = current; // because it is doubly linkedlist
+            current.next.prev = current;
         }
         current = current.next;
     }
-    return head; //return reference of head
+    return head;
 };
