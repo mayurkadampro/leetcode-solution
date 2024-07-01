@@ -3,16 +3,16 @@
  * @return {boolean}
  */
 var threeConsecutiveOdds = function (arr) {
-    let count = 1;
+    let count = 0;
     for (let value of arr) {
         if (value % 2 !== 0) {
             count++;
-        } else if (count <= 3) {
-            count = 1;
+            if (count === 3) {
+                return true;
+            }
+        } else {
+            count = 0;
         }
     }
-
-    console.log(count)
-    count--;
-    return count >= 3 ? true : false;
+    return false;
 };
