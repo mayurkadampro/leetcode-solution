@@ -16,7 +16,9 @@ var nodesBetweenCriticalPoints = function (head) {
     let idx = [];
 
     while (current && current.next) {
-        if (prev && ((current.val > prev.val) && (current.val > current.next.val)) || (prev && (current.val < prev.val) && (current.val < current.next.val))) {
+        if (prev && (current.val > prev.val) && (current.val > current.next.val)) {
+            idx.push(index);
+        } else if (prev && (current.val < prev.val) && (current.val < current.next.val)) {
             idx.push(index);
         }
         index++;
@@ -42,7 +44,6 @@ var nodesBetweenCriticalPoints = function (head) {
         if (i !== 0) {
             minDistance = Math.min(minDistance, idx[i] - idx[i - 1]);
         }
-
     }
 
     maxDistance = maxIdx - minIdx;
