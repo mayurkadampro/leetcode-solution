@@ -10,27 +10,29 @@ function ListNode(val, next) {
  * @return {ListNode}
  */
 var mergeKLists = function (lists) {
-    if (lists === null || lists.length === 0) return null;
+    if (!lists) return [];
 
-    const queue = new MinPriorityQueue({ priority: x => x.val });
+    const minPriorityQueue = new MinPriorityQueue({ priority: x => x.val });
+
     for (const head of lists) {
         if (head) {
-            queue.enqueue(head)
+            minPriorityQueue.enqueue(head);
         }
     }
 
-    let dummyNode = new ListNode()
+    let dummyNode = new ListNode(-1, null);
     let current = dummyNode;
 
-    while (!queue.isEmpty()) {
-        const { val, next } = queue.dequeue().element;
+    while (!minPriorityQueue.isEmpty()) {
+        const { val, next } = minPriorityQueue.dequeue().element;
 
-        current.next = new ListNode(val)
+        current.next = new ListNode(val, next);
         current = current.next;
 
         if (next) {
-            queue.enqueue(next)
+            minPriorityQueue.enqueue(next);
         }
+
     }
 
     return dummyNode.next;
