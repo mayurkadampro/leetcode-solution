@@ -8,11 +8,11 @@ var findTheWinner = function (n, k) {
     for (let i = 0; i < circle.length; i++) {
         circle[i] = i + 1;
     }
+
     let currIdx = 0;
     while (circle.length > 1) {
-        let nextRemove = (currIdx + k - 1) % circle.length;
-        circle.splice(nextRemove, 1);
-        currIdx = nextRemove;
+        currIdx = (currIdx + k - 1) % circle.length;
+        circle.splice(currIdx, 1);
     }
 
     return circle[0];
