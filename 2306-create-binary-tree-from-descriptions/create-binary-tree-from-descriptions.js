@@ -30,8 +30,6 @@ var createBinaryTree = function (descriptions) {
     }
 
     // PHASE 2: find the root
-    // if a parent node is present in child list -> its not the root
-    // -> delete it from the set
     for (let [parent] of descriptions) {
         if (!set.has(parent)) {
             return map.get(parent)
